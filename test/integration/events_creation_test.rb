@@ -7,5 +7,6 @@ class EventsCreationTest < ActionDispatch::IntegrationTest
       post events_path, event: { title:  "" }
     end
     assert_template 'events/new'
+    assert_select 'div#error_explanation'
   end
 end
