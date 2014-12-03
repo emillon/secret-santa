@@ -17,5 +17,10 @@ class EventsCreationTest < ActionDispatch::IntegrationTest
     end
     follow_redirect!
     assert_template 'events/show'
+    event = assigns :event
+    edit_link = edit_event_path(event)
+    assert_select 'a[href=?]', edit_link
+    get edit_link
+    assert_template 'events/edit'
   end
 end
