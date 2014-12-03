@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+santa:
+  name: Santa Claus
+  email: santa@example.com
+  event_id: 
+
+two:
+  name: MyString
+  email: MyString
+  event_id: 
