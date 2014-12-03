@@ -1,0 +1,29 @@
+<h1>Edit: <%= @event.title %></h1>
+
+<%= form_for @event do |f| %>
+  <%= render 'form_errors' %>
+  <fieldset>
+    <ul>
+      <li class="control-group">
+        <%= f.label :title, "Title" %>
+        <div class="controls">
+          <%= f.text_field :title %>
+        </div>
+      </li>
+    </ul>
+  </fieldset>
+  <fieldset id="event-participants">
+    <ul>
+      <%= f.fields_for :participants do |participant| %>
+        <%= render 'participant_fields', f: participant %>
+      <% end %>
+    </ul>
+    <%= link_to_add_association 'Add participant', f, :participants,
+      'data-association-insertion-node' => "#event-participants ul",
+      'data-association-insertion-method' => "append",
+      :wrap_object => Proc.new {|participant| participant.build_event; participant }
+    %> 
+  </fieldset>
+
+  <%= f.submit %> 
+<% end %>

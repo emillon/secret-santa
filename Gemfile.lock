@@ -49,6 +49,7 @@ GEM
       slop (~> 3.6)
     celluloid (0.16.0)
       timers (~> 4.0.0)
+    cocoon (1.2.6)
     coderay (1.1.0)
     coffee-rails (4.1.0)
       coffee-script (>= 2.2.0)
@@ -193,6 +194,7 @@ PLATFORMS
 DEPENDENCIES
   bootstrap-sass (= 3.2.0.0)
   byebug
+  cocoon (= 1.2.6)
   coffee-rails (~> 4.1.0)
   guard-minitest (= 2.3.1)
   jbuilder (~> 2.0)
