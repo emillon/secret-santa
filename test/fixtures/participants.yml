@@ -3,9 +3,14 @@
 santa:
   name: Santa Claus
   email: santa@example.com
-  event_id: 
+  event_id:
 
-two:
-  name: MyString
-  email: MyString
-  event_id: 
+michel:
+  name: Michel
+  email: michel@example.com
+  event_id:
+
+bob:
+  name: Bob
+  email: bob@example.com
+  event_id:
