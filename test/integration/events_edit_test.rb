@@ -55,5 +55,24 @@ class EventsEditTest < ActionDispatch::IntegrationTest
     participants = @event.participants(force_reload: true)
     assert_equal 2, participants.size
     assert_equal 'new b', participants[1].name
+
+    get edit_event_path(@event)
+    patch event_path(@event), event: {
+      participants_attributes: {
+        '0' => { name: 'a',
+                 email: 'a@a.com',
+                 _destroy: '1',
+                 id: id1
+               },
+        '1' => { name: 'new b',
+                 email: 'b@b.com',
+                 _destroy: 'false',
+                 id: id2
+               }
+      }
+    }
+    participants = @event.participants(force_reload: true)
+    assert_equal 1, participants.size
+    assert_equal 'new b', participants[0].name
   end
 end
