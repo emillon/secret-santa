@@ -32,5 +32,6 @@ class EventsEditTest < ActionDispatch::IntegrationTest
     follow_redirect!
     assert_not flash.empty?
     assert_template 'events/show'
+    assert_equal 2, @event.participants.size
   end
 end
