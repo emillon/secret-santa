@@ -30,6 +30,14 @@ class EventsController < ApplicationController
     end
   end
 
+  def draw
+    @event = Event.find(params[:id])
+    participants = @event.participants
+    participants = participants.collect { |x| x }
+    participants.shuffle!
+    @draw = participants.zip(participants.rotate)
+  end
+
   private
 
     def event_params
