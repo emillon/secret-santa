@@ -12,6 +12,9 @@
       </li>
     </ul>
   </fieldset>
+
+  <h2>Participants</h2>
+
   <fieldset id="event-participants">
     <ul>
       <%= f.fields_for :participants do |participant| %>
@@ -23,6 +26,12 @@
       'data-association-insertion-method' => "append",
       :wrap_object => Proc.new {|participant| participant.build_event; participant }
     %> 
+  </fieldset>
+
+  <h2>Constraints</h2>
+
+  <fieldset id="event-constraints">
+    Edit constraints here.
   </fieldset>
 
   <%= f.submit %> 
