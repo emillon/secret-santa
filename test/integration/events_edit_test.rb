@@ -14,7 +14,7 @@ class EventsEditTest < ActionDispatch::IntegrationTest
     assert_select 'div#error_explanation'
   end
 
-  test "valid edit" do
+  test "valid edits" do
     get edit_event_path(@event)
     assert_template 'events/edit'
     patch event_path(@event), event: {
@@ -32,6 +32,28 @@ class EventsEditTest < ActionDispatch::IntegrationTest
     follow_redirect!
     assert_not flash.empty?
     assert_template 'events/show'
-    assert_equal 2, @event.participants.size
+    participants = @event.participants(force_reload: true)
+    assert_equal 2, participants.size
+
+    id1, id2 = participants.collect { |x| x.id }
+
+    get edit_event_path(@event)
+    patch event_path(@event), event: {
+      participants_attributes: {
+        '0' => { name: 'a',
+                 email: 'a@a.com',
+                 _destroy: 'false',
+                 id: id1
+               },
+        '1' => { name: 'new b',
+                 email: 'b@b.com',
+                 _destroy: 'false',
+                 id: id2
+               }
+      }
+    }
+    participants = @event.participants(force_reload: true)
+    assert_equal 2, participants.size
+    assert_equal 'new b', participants[1].name
   end
 end
