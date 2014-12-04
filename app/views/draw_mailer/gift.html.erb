@@ -1,5 +1,25 @@
-Hello <%= @draw.giver.name %>,
+<p>
+  Hello <%= @draw.giver.name %>,
+</p>
 
-You receive this email as part of "<%= @draw.event.title %>".
+<p>
+You are taking part in "<%= @draw.event.title %>".
+</p>
 
-You have been chosen to make a gift to <%= @draw.receiver.name %>.
+<p>
+You should make a gift to:
+</p>
+
+<p>
+<b>
+<%= @draw.receiver.name %>
+</b>
+</p>
+
+<p>
+This event has been created on Secret Santa Creator. For more information, visit:
+</p>
+
+<p>
+<%= link_to root_url, root_url %>
+</p>
