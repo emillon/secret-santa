@@ -1,1 +1,11 @@
 <h2>Draw the ballots</h2>
+
+This will shuffle the participants, and create an order.
+
+After this, no new participants can be added.
+
+<%= form_for @event, url: event_draw_path do |f| %>
+  <%= render '/shared/form_errors' %>
+
+  <%= f.submit "Go!", class: "btn btn-primary" %>
+<% end %>

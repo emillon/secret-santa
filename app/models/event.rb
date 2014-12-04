@@ -11,11 +11,7 @@ class Event < ActiveRecord::Base
     :reject_if => :all_blank,
     :allow_destroy => true
 
-  def all_constraints_ok(draw)
-    draw.all? do |(giver, receiver)|
-      self.constraints.all? { |c| c.respected_by(giver, receiver) }
-    end
-  end
+  has_many :draws
 
   def select_participants
     self.participants.collect { |x| [x.name, x.id] }
@@ -29,10 +25,18 @@ class Event < ActiveRecord::Base
     max_tries.times do
       participants.shuffle!
       draw = participants.zip(participants.rotate)
-      if self.all_constraints_ok draw
+      if all_constraints_ok draw
         return draw
       end
     end
     nil
   end
+
+  private
+
+    def all_constraints_ok(draw)
+      draw.all? do |(giver, receiver)|
+        self.constraints.all? { |c| c.respected_by(giver, receiver) }
+      end
+    end
 end

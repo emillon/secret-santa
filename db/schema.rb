@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141204091422) do
+ActiveRecord::Schema.define(version: 20141204131503) do
 
   create_table "constraints", force: true do |t|
     t.integer  "event_id"
@@ -24,6 +24,18 @@ ActiveRecord::Schema.define(version: 20141204091422) do
   add_index "constraints", ["event_id"], name: "index_constraints_on_event_id"
   add_index "constraints", ["one_id"], name: "index_constraints_on_one_id"
   add_index "constraints", ["other_id"], name: "index_constraints_on_other_id"
+
+  create_table "draws", force: true do |t|
+    t.integer  "event_id"
+    t.integer  "giver_id"
+    t.integer  "receiver_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "draws", ["event_id"], name: "index_draws_on_event_id"
+  add_index "draws", ["giver_id"], name: "index_draws_on_giver_id"
+  add_index "draws", ["receiver_id"], name: "index_draws_on_receiver_id"
 
   create_table "events", force: true do |t|
     t.string   "title"

@@ -17,5 +17,10 @@ class DrawsControllerTest < ActionController::TestCase
   test "create a draw" do
     get :new, event_id: @event
     assert_response :success
+    assert_difference '@event.draws(force_reload: true).size', 3 do
+      post :create, event_id: @event
+    end
+    assert_not flash.empty?
+    assert_redirected_to @event
   end
 end

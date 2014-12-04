@@ -30,11 +30,6 @@ class EventsController < ApplicationController
     end
   end
 
-  def draw
-    @event = Event.find(params[:id])
-    @draw = @event.draw_order
-  end
-
   private
 
     def event_params
