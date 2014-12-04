@@ -8,7 +8,7 @@ class CreateConstraints < ActiveRecord::Migration
       t.timestamps null: false
     end
     add_foreign_key :constraints, :events
-    add_foreign_key :constraints, :ones
-    add_foreign_key :constraints, :others
+    add_foreign_key :constraints, :participants, column: :one_id
+    add_foreign_key :constraints, :participants, column: :other_id
   end
 end
