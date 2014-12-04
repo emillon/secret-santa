@@ -13,7 +13,7 @@ class DrawsController < ApplicationController
     end
   end
 
-  def create
+  def update
     @event = Event.find(params[:event_id])
     for (giver, receiver) in @event.draw_order
       draw = Draw.new(giver: giver, receiver: receiver)
