@@ -53,4 +53,13 @@ class ParticipantTest < ActiveSupport::TestCase
     @other_event.participants << p3
     assert p3.valid?
   end
+
+  test "Several participants can have the same email" do
+    p1 = Participant.new(name: 'Jimmy', email: 'contact-ledzep@example.com')
+    p2 = Participant.new(name: 'Robert', email: 'contact-ledzep@example.com')
+    @event.participants << p1
+    @event.participants << p2
+    assert p1.valid?
+    assert p2.valid?
+  end
 end
