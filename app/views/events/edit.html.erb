@@ -1,6 +1,7 @@
 <h1>Edit: <%= @event.title %></h1>
 
 <%= form_for @event do |f| %>
+<div class="container">
   <%= render 'form_errors' %>
   <fieldset>
     <ul>
@@ -13,6 +14,7 @@
     </ul>
   </fieldset>
 
+  <div class="col-md-7">
   <h2>Participants</h2>
 
   <fieldset id="event-participants">
@@ -27,12 +29,16 @@
       :wrap_object => Proc.new {|participant| participant.build_event; participant }
     %> 
   </fieldset>
+  </div>
 
+  <div class="col-md-5">
   <h2>Constraints</h2>
 
   <fieldset id="event-constraints">
     Edit constraints here.
   </fieldset>
+  </div>
 
-  <%= f.submit %> 
+</div>
+<%= f.submit %>
 <% end %>
