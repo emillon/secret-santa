@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  event_id: 
+  one_id: 
+  other_id: 
+
+two:
+  event_id: 
+  one_id: 
+  other_id: 

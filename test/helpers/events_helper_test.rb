@@ -21,6 +21,12 @@ class EventsHelperTest < ActionView::TestCase
       draw.any? { | (giver, receiver) | receiver == p }
     end
 
+    def consistent_with_constraints(event, draw, giver, reveiver)
+      not event.constraints.any? do |c|
+        c == [giver, receiver] or c == [receiver, giver]
+      end
+    end
+
     for p in @event.participants
       assert(receives_a_gift(draw, p))
       assert(makes_a_gift(draw, p))
@@ -28,6 +34,8 @@ class EventsHelperTest < ActionView::TestCase
 
     for (giver, receiver) in draw
       assert_not_equal giver, receiver
+      consistent = consistent_with_constraints @event, draw, giver, receiver
+      assert consistent, "Constraints should not be violated"
     end
   end
 end
