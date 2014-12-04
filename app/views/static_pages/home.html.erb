@@ -1,10 +1,47 @@
 <div class="center jumbotron">
   <h1>Secret Santa creator</h1>
 
+  <div class="row">
+  <div class="col-md-10">
   <h2>
     Organize "Secret Santa"-type events with your family or friends.
   </h2>
 
+  <p>It is free of charge and no subscription is needed.</p>
+  </div>
+
+  <div class="col-md-2">
   <%= link_to "Start now!", new_event_path, class: "btn btn-lg btn-primary" %>
-  No subscription required.
+  </div>
+  </div>
+
+</div>
+
+<div class="row">
+<div class="col-md-3">
+  <h2>Enter participants and constraints</h2>
+
+  Fill the name and email of participants.
+
+  You can even add constraints such as: Alice should not make a gift to Bob.
+</div>
+<div class="col-md-3">
+  <h2>Ballots are randomly drawn</h2>
+
+  Every participant gets assigned another one. He now has to make a gift to him!
+
+  Nobody knows who has to make a gift to him.
+</div>
+<div class="col-md-3">
+  <h2>Each participant receives an email</h2>
+
+  Once the ballots are drawn, every participant receives an email with his "target".
+</div>
+
+<div class="col-md-3">
+  <h2>Enjoy the mystery of Christmas</h2>
+
+  When the day comes, every participant receives a gift from someone!
+</div>
+
 </div>
