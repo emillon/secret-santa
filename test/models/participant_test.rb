@@ -18,9 +18,12 @@ class ParticipantTest < ActiveSupport::TestCase
     assert_not @participant.valid?
   end
 
-  test "create participant with invalid email" do
+  test "create participant with empty email" do
     @participant.email = ''
-    assert_not @participant.valid?
+    assert @participant.valid?
+  end
+
+  test "create participant with invalid email" do
     @participant.email = 'foo'
     assert_not @participant.valid?
   end
