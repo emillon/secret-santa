@@ -5,12 +5,27 @@ santa:
   email: santa@example.com
   event_id:
 
+santas_wife:
+  name: Santa Claus' wife
+  email: santaswife@example.com
+  event_id:
+
 michel:
   name: Michel
   email: michel@example.com
   event_id:
 
+michels_wife:
+  name: Michel's wife
+  email: michelswife@example.com
+  event_id:
+
 bob:
   name: Bob
   email: bob@example.com
+  event_id:
+
+bobs_wife:
+  name: Bob's wife
+  email: bobswife@example.com
   event_id:
