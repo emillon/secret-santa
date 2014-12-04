@@ -20,7 +20,10 @@ class DrawsController < ApplicationController
       @event.draws << draw
       draw.save
     end
-    flash[:success] = 'Draw has been made'
+    for draw in @event.draws
+      draw.send_email
+    end
+    flash[:success] = 'Ballots have been drawn and emails sent.'
     redirect_to @event
   end
 end

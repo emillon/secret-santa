@@ -6,7 +6,7 @@ class DrawMailerPreview < ActionMailer::Preview
     event = Event.first
     draw = event.draw_order
     (giver, receiver) = draw[0]
-    DrawMailer.gift event, giver, receiver
+    DrawMailer.gift draw
   end
 
 end
