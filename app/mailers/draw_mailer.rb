@@ -8,7 +8,7 @@ class DrawMailer < ApplicationMailer
   #
   def gift(draw)
     @draw = draw
-    subject = "#{@draw.event.title} - your gift assignment"
+    subject = "#{@draw.event.title} - gift assignment for #{@draw.giver.name}"
     mail to: @draw.giver.email, subject: subject
   end
 end
