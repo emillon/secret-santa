@@ -31,6 +31,8 @@
 
 </div>
 
-<%= link_to 'Edit this event', edit_event_path(@event) %>
+<% if @event.draws.empty? %>
+  <%= link_to 'Edit this event', edit_event_path(@event) %>
 
-<%= link_to 'Draw the ballots', event_draw_path(@event) %>
+  <%= link_to 'Draw the ballots', event_draw_path(@event) %>
+<% end %>

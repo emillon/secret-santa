@@ -14,14 +14,23 @@ class EventsController < ApplicationController
 
   def show
     @event = Event.find(params[:id])
+    if @event.draws.any?
+      flash[:info] = "The ballots for this event have already been drawn."
+    end
   end
 
   def edit
     @event = Event.find(params[:id])
+    if @event.draws.any?
+      redirect_to @event
+    end
   end
 
   def update
     @event = Event.find(params[:id])
+    if @event.draws.any?
+      redirect_to @event
+    end
     if @event.update_attributes(event_params)
       flash[:success] = "Event updated"
       redirect_to @event
