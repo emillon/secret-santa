@@ -27,7 +27,7 @@
       'data-association-insertion-node' => "#event-participants ul",
       'data-association-insertion-method' => "append",
       :wrap_object => Proc.new {|participant| participant.build_event; participant }
-    %> 
+    %>
   </fieldset>
   </div>
 
@@ -35,7 +35,16 @@
   <h2>Constraints</h2>
 
   <fieldset id="event-constraints">
-    Edit constraints here.
+    <ul>
+      <%= f.fields_for :constraints do |constraint| %>
+        <%= render 'constraint_fields', f: constraint %>
+      <% end %>
+    </ul>
+    <%= link_to_add_association 'Add constraint', f, :constraints,
+      'data-association-insertion-node' => "#event-constraints ul",
+      'data-association-insertion-method' => "append",
+      :wrap_object => Proc.new {|constraint| constraint.build_event; constraint }
+    %>
   </fieldset>
   </div>
 

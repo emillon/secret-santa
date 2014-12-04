@@ -16,7 +16,17 @@
   <div class="col-md-4">
     <h2>Constraints</h2>
 
-    No constraints.
+    <% if @event.constraints.empty? %>
+      No constraints.
+    <% elsif %>
+      <ul>
+        <% for c in @event.constraints %>
+          <li>
+            <%= c.one.name %> - <%= c.other.name %>
+          </li>
+        <% end %>
+      </ul>
+    <% end %>
   </div>
 
 </div>
