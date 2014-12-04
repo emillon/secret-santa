@@ -32,7 +32,7 @@ class EventsController < ApplicationController
 
   def draw
     @event = Event.find(params[:id])
-    @draw = draw_order @event
+    @draw = @event.draw_order
   end
 
   private

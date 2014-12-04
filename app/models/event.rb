@@ -20,4 +20,19 @@ class Event < ActiveRecord::Base
   def select_participants
     self.participants.collect { |x| [x.name, x.id] }
   end
+
+  def draw_order
+    participants = self.participants
+    participants = participants.collect { |x| x }
+    draw = []
+    max_tries = 1000
+    max_tries.times do
+      participants.shuffle!
+      draw = participants.zip(participants.rotate)
+      if self.all_constraints_ok draw
+        return draw
+      end
+    end
+    nil
+  end
 end
