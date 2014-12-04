@@ -1,10 +1,16 @@
 class DrawsController < ApplicationController
   def new
     @event = Event.find(params[:event_id])
+    if @event.draws.any?
+      redirect_to event_draw_url(@event)
+    end
   end
 
   def show
-    redirect_to new_event_draw_url
+    @event = Event.find(params[:event_id])
+    if @event.draws.empty?
+      redirect_to new_event_draw_url
+    end
   end
 
   def create

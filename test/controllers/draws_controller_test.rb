@@ -22,5 +22,11 @@ class DrawsControllerTest < ActionController::TestCase
     end
     assert_not flash.empty?
     assert_redirected_to @event
+
+    get :new, event_id: @event
+    assert_redirected_to :event_draw, event_id: @event
+
+    get :show, event_id: @event
+    assert_response :success
   end
 end
