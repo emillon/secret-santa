@@ -8,7 +8,7 @@ class CreateDraws < ActiveRecord::Migration
       t.timestamps null: false
     end
     add_foreign_key :draws, :events
-    add_foreign_key :draws, :givers
-    add_foreign_key :draws, :receivers
+    add_foreign_key :draws, :participants, column: :giver_id
+    add_foreign_key :draws, :participants, column: :receiver_id
   end
 end
