@@ -3,5 +3,7 @@ Rails.application.routes.draw do
 
   get 'events/:id/draw', to: 'events#draw'
 
-  resources :events
+  resources :events do
+    resource :draw
+  end
 end
