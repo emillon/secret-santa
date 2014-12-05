@@ -1,0 +1,4 @@
+fr:
+    draw_mailer:
+        gift:
+            subject_template: "attribution du cadeau pour"

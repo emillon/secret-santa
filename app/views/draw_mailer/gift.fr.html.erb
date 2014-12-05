@@ -1,0 +1,25 @@
+<p>
+  Bonjour <%= @draw.giver.name %>,
+</p>
+
+<p>
+Vous participez à "<%= @draw.event.title %>".
+</p>
+
+<p>
+Vous devez faire un cadeau à:
+</p>
+
+<p>
+<b>
+<%= @draw.receiver.name %>
+</b>
+</p>
+
+<p>
+Cet événement a été créé avec Secret Santa Creator. Pour plus d'information, allez sur le site:
+</p>
+
+<p>
+<%= link_to root_url, root_url %>
+</p>

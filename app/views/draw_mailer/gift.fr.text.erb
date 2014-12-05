@@ -1,0 +1,11 @@
+Bonjour <%= @draw.giver.name %>,
+
+Vous participez à "<%= @draw.event.title %>".
+
+Vous devez faire un cadeau à:
+
+<%= @draw.receiver.name %>
+
+Cet événement a été créé avec Secret Santa Creator. Pour plus d'information, allez sur le site:
+
+<%= link_to root_url, root_url %>

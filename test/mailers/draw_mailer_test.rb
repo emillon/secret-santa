@@ -1,19 +1,33 @@
 require 'test_helper'
 
 class DrawMailerTest < ActionMailer::TestCase
-  test "gift" do
-    event = events :secretsanta
-    michel = participants :michel
+  def setup
+    @event = events :secretsanta
+    @michel = participants :michel
     bob = participants :bob
-    draw = Draw.new(event: event, giver: michel, receiver: bob)
-    mail = DrawMailer.gift draw
-    assert_equal "Secret Santa - gift assignment for Michel", mail.subject
-    assert_equal [michel.email], mail.to
-    assert_equal ["noreply@example.com"], mail.from
-    assert_match "Hello Michel", mail.html_part.decoded
-    assert_match "Hello Michel", mail.text_part.decoded
-    assert_match /to.*Bob/m, mail.html_part.decoded
-    assert_match /to.*Bob/m, mail.text_part.decoded
+    @draw = Draw.new(event: @event, giver: @michel, receiver: bob)
   end
 
+  test "gift" do
+    mail = DrawMailer.gift @draw
+    assert_equal "Secret Santa - gift assignment for Michel", mail.subject
+    assert_equal [@michel.email], mail.to
+    assert_equal ["noreply@example.com"], mail.from
+    for part in [mail.html_part.decoded, mail.text_part.decoded]
+      assert_match "Hello Michel", part
+      assert_match /to.*Bob/m, part
+    end
+  end
+
+  test "emails get localized" do
+    @event.locale = :fr
+    mail = DrawMailer.gift @draw
+    assert_equal "Secret Santa - attribution du cadeau pour Michel", mail.subject
+    assert_equal [@michel.email], mail.to
+    assert_equal ["noreply@example.com"], mail.from
+    for part in [mail.html_part.decoded, mail.text_part.decoded]
+      assert_match "Bonjour Michel", part
+      assert_match /à.*Bob/m, part
+    end
+  end
 end

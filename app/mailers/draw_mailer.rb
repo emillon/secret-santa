@@ -8,7 +8,9 @@ class DrawMailer < ApplicationMailer
   #
   def gift(draw)
     @draw = draw
-    subject = "#{@draw.event.title} - gift assignment for #{@draw.giver.name}"
-    mail to: @draw.giver.email, subject: subject
+    I18n.with_locale @draw.event.locale do
+      subject = "#{@draw.event.title} - #{I18n.t 'draw_mailer.gift.subject_template'} #{@draw.giver.name}"
+      mail to: @draw.giver.email, subject: subject
+    end
   end
 end

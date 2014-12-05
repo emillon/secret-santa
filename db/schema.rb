@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141204131503) do
+ActiveRecord::Schema.define(version: 20141205133618) do
 
   create_table "constraints", force: true do |t|
     t.integer  "event_id"
@@ -39,8 +39,9 @@ ActiveRecord::Schema.define(version: 20141204131503) do
 
   create_table "events", force: true do |t|
     t.string   "title"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+    t.string   "locale",     default: "en"
   end
 
   create_table "participants", force: true do |t|
