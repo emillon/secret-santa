@@ -1,4 +1,5 @@
 en:
+    locale_name: English
     draw_mailer:
         gift:
             subject_template: "gift assignment for"

@@ -11,6 +11,12 @@
           <%= f.text_field :title %>
         </div>
       </li>
+      <li class="control-group">
+        <%= f.label :locale, "Language" %>
+        <div class="controls">
+          <%= f.select :locale, locales_and_names %>
+        </div>
+      </li>
     </ul>
   </fieldset>
 

@@ -75,4 +75,16 @@ class EventsEditTest < ActionDispatch::IntegrationTest
     assert_equal 1, participants.size
     assert_equal 'new b', participants[0].name
   end
+
+  test "locale in edit page" do
+    get edit_event_path(@event)
+    assert_select 'select#event_locale > option[selected]', 'English'
+
+    patch event_path(@event), event: {
+      locale: :fr
+    }
+
+    get edit_event_path(@event)
+    assert_select 'select#event_locale > option[selected]', 'Français'
+  end
 end
