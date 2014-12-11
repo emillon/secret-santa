@@ -16,6 +16,10 @@ You should make a gift to:
 </b>
 </p>
 
+<% if @draw.event.amount? and not @draw.event.amount.empty? %>
+The suggested amount for the gift is: <b><%= @draw.event.amount %></b>.
+<% end %>
+
 <p>
 This event has been created on Secret Santa Creator. For more information, visit:
 </p>

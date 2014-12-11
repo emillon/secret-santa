@@ -12,6 +12,12 @@
         </div>
       </li>
       <li class="control-group">
+        <%= f.label :amount, "Amount" %>
+        <div class="controls">
+          <%= f.text_field :amount %>
+        </div>
+      </li>
+      <li class="control-group">
         <%= f.label :locale, "Language" %>
         <div class="controls">
           <%= f.select :locale, locales_and_names %>

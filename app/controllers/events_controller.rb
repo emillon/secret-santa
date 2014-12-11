@@ -43,6 +43,7 @@ class EventsController < ApplicationController
 
     def event_params
       params.require(:event).permit(:title,
+                                    :amount,
                                     :locale,
                                     participants_attributes: [:id, :_destroy, :name, :email],
                                     constraints_attributes: [:id, :_destroy, :one_id, :other_id]

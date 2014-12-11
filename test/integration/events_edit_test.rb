@@ -87,4 +87,16 @@ class EventsEditTest < ActionDispatch::IntegrationTest
     get edit_event_path(@event)
     assert_select 'select#event_locale > option[selected]', 'Français'
   end
+
+  test "edit amount" do
+    patch event_path(@event), event: {
+      amount: '5€'
+    }
+
+    get edit_event_path(@event)
+    assert_match /5€/, response.body
+
+    get event_path(@event)
+    assert_match /5€/, response.body
+  end
 end

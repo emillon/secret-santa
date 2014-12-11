@@ -16,6 +16,10 @@ Vous devez faire un cadeau à:
 </b>
 </p>
 
+<% if @draw.event.amount? and not @draw.event.amount.empty? %>
+Le montant suggéré est de: <b><%= @draw.event.amount %></b>.
+<% end %>
+
 <p>
 Cet événement a été créé avec Secret Santa Creator. Pour plus d'information, allez sur le site:
 </p>

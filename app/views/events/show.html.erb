@@ -1,5 +1,9 @@
 <h1><%= @event.title %></h1>
 
+<% if @event.amount? and not @event.amount.empty? %>
+  <b>Amount:</b> <%= @event.amount %>
+<% end %>
+
 <div class="container">
 
   <div class="col-md-4 col-md-offset-2">
