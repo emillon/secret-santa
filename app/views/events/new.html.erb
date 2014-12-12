@@ -5,14 +5,20 @@
     <%= form_for(@event) do |f| %>
       <%= render '/shared/form_errors' %>
 
-      <%= f.label :title %>
-      <%= f.text_field :title, class: 'form-control' %>
+      <div class="form-group">
+        <%= f.label :title %>
+        <%= f.text_field :title, class: 'form-control' %>
+      </div>
 
-      <%= f.label :amount %>
-      <%= f.text_field :amount, class: 'form-control' %>
+      <div class="form-group">
+        <%= f.label :amount %>
+        <%= f.text_field :amount, class: 'form-control' %>
+      </div>
 
-      <%= f.label :locale, "Language" %>
-      <%= f.select :locale, locales_and_names, class: 'form-control' %>
+      <div class="form-group">
+        <%= f.label :locale, "Language" %>
+        <%= f.select :locale, locales_and_names, class: 'form-control' %>
+      </div>
 
       <%= f.submit "Create an event", class: "btn btn-primary" %>
     <% end %>
