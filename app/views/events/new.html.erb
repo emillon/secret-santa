@@ -11,6 +11,9 @@
       <%= f.label :amount %>
       <%= f.text_field :amount, class: 'form-control' %>
 
+      <%= f.label :locale, "Language" %>
+      <%= f.select :locale, locales_and_names, class: 'form-control' %>
+
       <%= f.submit "Create an event", class: "btn btn-primary" %>
     <% end %>
   </div>
