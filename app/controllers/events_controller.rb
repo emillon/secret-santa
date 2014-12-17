@@ -29,7 +29,7 @@ class EventsController < ApplicationController
   def update
     @event = Event.find(params[:id])
     if @event.draws.any?
-      redirect_to @event
+      return (redirect_to @event)
     end
     if @event.update_attributes(event_params)
       flash[:success] = "Event updated"
