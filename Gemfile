@@ -8,9 +8,9 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
-gem 'bootstrap-sass', '3.2.0.0'
+gem 'bootstrap-sass', '~> 3.2.0'
 gem 'cocoon', '1.2.6'
-gem 'coveralls', require: false
+gem 'coveralls', '~> 0.7.1', require: false
 
 group :development, :test do
   gem 'byebug'
@@ -27,6 +27,6 @@ end
 
 group :production do
   gem 'pg',             '0.17.1'
-  gem 'rails_12factor', '0.0.2'
+  gem 'rails_12factor', '~> 0.0.2'
   gem 'unicorn',        '4.8.3'
 end

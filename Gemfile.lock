@@ -225,11 +225,11 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  bootstrap-sass (= 3.2.0.0)
+  bootstrap-sass (~> 3.2.0)
   byebug
   cocoon (= 1.2.6)
   coffee-rails (~> 4.1.0)
-  coveralls
+  coveralls (~> 0.7.1)
   guard-minitest (= 2.3.1)
   jbuilder (~> 2.0)
   jquery-rails
@@ -237,7 +237,7 @@ DEPENDENCIES
   minitest-reporters (= 1.0.5)
   pg (= 0.17.1)
   rails (= 4.2.0.rc1)
-  rails_12factor (= 0.0.2)
+  rails_12factor (~> 0.0.2)
   sass-rails (~> 4.0)
   sdoc (~> 0.4.0)
   spring
