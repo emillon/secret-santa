@@ -1,3 +1,10 @@
 language: ruby
 rvm:
   - 2.1.5
+deploy:
+  provider: heroku
+  api_key:
+    secure: N7UiIXc/fxYD1+mNVgpfTkJd/48v8EWRvjAaol95dC3aUHfgm/vZZU1yDLaE1WGQqxZckPD+9vlpx/rVd6SFWBWoKIn3m0IRXcOT80zvRjAZdEhhZyrZPr5oU6LfX23N0fkb3tyIqnV4o+NAqV2y1qAEhM9NWscBdXMwReDAcgA=
+  app: secretsantacreator
+  on:
+    repo: emillon/secret-santa
