@@ -4,7 +4,7 @@ class ParticipantTest < ActiveSupport::TestCase
 
   def setup
     @participant = participants :santa
-    @event = events :secretsanta
+    @event = events :empty
     @other_event = events :thesupersecretsanta
   end
 

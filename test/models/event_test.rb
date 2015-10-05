@@ -2,7 +2,7 @@ require 'test_helper'
 
 class EventTest < ActiveSupport::TestCase
   def setup
-    @event = Event.new(title: "title")
+    @event = events :secretsanta
   end
 
   test "should be valid" do
@@ -15,20 +15,6 @@ class EventTest < ActiveSupport::TestCase
   end
 
   test "draw is fair" do
-    event = events :secretsanta
-    @event.participants << participants(:santa)
-    @event.participants << participants(:michel)
-    @event.participants << participants(:bob)
-    @event.participants << participants(:santas_wife)
-    @event.participants << participants(:michels_wife)
-    @event.participants << participants(:bobs_wife)
-
-    @event.constraints << Constraint.new(one: participants(:santa), other: participants(:santas_wife))
-    @event.constraints << Constraint.new(one: participants(:michel), other: participants(:michels_wife))
-    @event.constraints << Constraint.new(one: participants(:bob), other: participants(:bobs_wife))
-
-    assert_equal 6, @event.participants.size
-    assert_equal 3, @event.constraints.size
     50.times do
       draw = @event.draw_order
 

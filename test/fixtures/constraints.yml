@@ -1,11 +1,14 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+santa_and_wife:
+  event: secretsanta
+  one: santa
+  other: santas_wife
 
-one:
-  event_id: 
-  one_id: 
-  other_id: 
+michel_and_wife:
+  event: secretsanta
+  one: michel
+  other: michels_wife
 
-two:
-  event_id: 
-  one_id: 
-  other_id: 
+bob_and_wife:
+  event: secretsanta
+  one: bob
+  other: bobs_wife

@@ -4,9 +4,6 @@ class DrawsControllerTest < ActionController::TestCase
 
   def setup
     @event = events :secretsanta
-    @event.participants << participants(:santa)
-    @event.participants << participants(:michel)
-    @event.participants << participants(:bob)
   end
 
   test "show the draw creation page" do
@@ -17,7 +14,8 @@ class DrawsControllerTest < ActionController::TestCase
   test "create a draw" do
     get :new, event_id: @event
     assert_response :success
-    assert_difference '@event.draws(force_reload: true).size', 3 do
+    delta = @event.participants.size
+    assert_difference '@event.draws(force_reload: true).size', delta do
       patch :update, event_id: @event
     end
     assert_not flash.empty?

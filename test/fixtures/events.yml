@@ -1,7 +1,8 @@
+empty:
+  title: Some empty event
+
 secretsanta:
   title: Secret Santa
-  id: 1
 
 thesupersecretsanta:
   title: That other super Secret Santa
-  id: 2
