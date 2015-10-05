@@ -27,4 +27,12 @@ class DrawsControllerTest < ActionController::TestCase
     get :show, event_id: @event
     assert_response :success
   end
+
+  test "impossible draw" do
+    event = events :impossible
+    get :new, event_id: event
+    patch :update, event_id: event
+    assert_redirected_to event
+    assert_match(/not be satisfied/, flash[:danger])
+  end
 end

@@ -6,3 +6,6 @@ secretsanta:
 
 thesupersecretsanta:
   title: That other super Secret Santa
+
+impossible:
+  title: An event with unsatisfiable constraints

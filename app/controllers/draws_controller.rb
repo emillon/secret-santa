@@ -15,15 +15,26 @@ class DrawsController < ApplicationController
 
   def update
     @event = Event.find(params[:event_id])
-    for (giver, receiver) in @event.draw_order
-      draw = Draw.new(giver: giver, receiver: receiver)
-      @event.draws << draw
-      draw.save
+    order = @event.draw_order
+    if order.nil?
+      flash[:danger] = 'Constraints could not be satisfied. You can remove some of them and try again.'
+    else
+      send_draws(order)
+      flash[:success] = 'Ballots have been drawn and emails sent.'
     end
-    for draw in @event.draws
-      draw.send_email
-    end
-    flash[:success] = 'Ballots have been drawn and emails sent.'
     redirect_to @event
   end
+
+  private
+
+    def send_draws(order)
+      for (giver, receiver) in order
+        draw = Draw.new(giver: giver, receiver: receiver)
+        @event.draws << draw
+        draw.save
+      end
+      for draw in @event.draws
+        draw.send_email
+      end
+    end
 end
