@@ -58,4 +58,12 @@ class EventTest < ActiveSupport::TestCase
       end
     end
   end
+
+  test "ids are not sequential" do
+    e1 = Event.new(title: "Event 1")
+    e1.save
+    e2 = Event.new(title: "Event 2")
+    e2.save
+    assert_not_equal e2.id, (e1.id + 1)
+  end
 end

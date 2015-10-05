@@ -13,6 +13,8 @@ class Event < ActiveRecord::Base
 
   has_many :draws
 
+  before_create :randomize_id
+
   def select_participants
     self.participants.collect { |x| [x.name, x.id] }
   end
@@ -38,5 +40,11 @@ class Event < ActiveRecord::Base
       draw.all? do |(giver, receiver)|
         self.constraints.all? { |c| c.respected_by(giver, receiver) }
       end
+    end
+
+    def randomize_id
+      begin
+        self.id = SecureRandom.random_number(1_000_000)
+      end while Event.where(id: self.id).exists?
     end
 end
