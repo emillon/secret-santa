@@ -13,7 +13,7 @@
 
 ActiveRecord::Schema.define(version: 20141211221832) do
 
-  create_table "constraints", force: true do |t|
+  create_table "constraints", force: :cascade do |t|
     t.integer  "event_id"
     t.integer  "one_id"
     t.integer  "other_id"
@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(version: 20141211221832) do
   add_index "constraints", ["one_id"], name: "index_constraints_on_one_id"
   add_index "constraints", ["other_id"], name: "index_constraints_on_other_id"
 
-  create_table "draws", force: true do |t|
+  create_table "draws", force: :cascade do |t|
     t.integer  "event_id"
     t.integer  "giver_id"
     t.integer  "receiver_id"
@@ -37,7 +37,7 @@ ActiveRecord::Schema.define(version: 20141211221832) do
   add_index "draws", ["giver_id"], name: "index_draws_on_giver_id"
   add_index "draws", ["receiver_id"], name: "index_draws_on_receiver_id"
 
-  create_table "events", force: true do |t|
+  create_table "events", force: :cascade do |t|
     t.string   "title"
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
@@ -45,7 +45,7 @@ ActiveRecord::Schema.define(version: 20141211221832) do
     t.string   "amount"
   end
 
-  create_table "participants", force: true do |t|
+  create_table "participants", force: :cascade do |t|
     t.string   "name"
     t.string   "email"
     t.integer  "event_id"
