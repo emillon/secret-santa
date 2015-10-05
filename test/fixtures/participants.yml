@@ -3,29 +3,29 @@
 santa:
   name: Santa Claus
   email: santa@example.com
-  event_id:
+  event: secretsanta
 
 santas_wife:
   name: Santa Claus' wife
   email: santaswife@example.com
-  event_id:
+  event: secretsanta
 
 michel:
   name: Michel
   email: michel@example.com
-  event_id:
+  event: secretsanta
 
 michels_wife:
   name: Michel's wife
   email: michelswife@example.com
-  event_id:
+  event: secretsanta
 
 bob:
   name: Bob
   email: bob@example.com
-  event_id:
+  event: secretsanta
 
 bobs_wife:
   name: Bob's wife
   email: bobswife@example.com
-  event_id:
+  event: secretsanta

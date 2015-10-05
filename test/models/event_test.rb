@@ -1,8 +1,22 @@
 require 'test_helper'
 
+def receives_a_gift(draw, p)
+  draw.any? { | (_, receiver) | receiver == p }
+end
+
+def makes_a_gift(draw, p)
+  draw.any? { | (giver, _) | giver == p }
+end
+
+def consistent_with_constraints(event, giver, receiver)
+  event.constraints.all? do |c|
+    c.respected_by(giver, receiver)
+  end
+end
+
 class EventTest < ActiveSupport::TestCase
   def setup
-    @event = Event.new(title: "title")
+    @event = events :secretsanta
   end
 
   test "should be valid" do
@@ -15,36 +29,8 @@ class EventTest < ActiveSupport::TestCase
   end
 
   test "draw is fair" do
-    event = events :secretsanta
-    @event.participants << participants(:santa)
-    @event.participants << participants(:michel)
-    @event.participants << participants(:bob)
-    @event.participants << participants(:santas_wife)
-    @event.participants << participants(:michels_wife)
-    @event.participants << participants(:bobs_wife)
-
-    @event.constraints << Constraint.new(one: participants(:santa), other: participants(:santas_wife))
-    @event.constraints << Constraint.new(one: participants(:michel), other: participants(:michels_wife))
-    @event.constraints << Constraint.new(one: participants(:bob), other: participants(:bobs_wife))
-
-    assert_equal 6, @event.participants.size
-    assert_equal 3, @event.constraints.size
     50.times do
       draw = @event.draw_order
-
-      def receives_a_gift(draw, p)
-        draw.any? { | (giver, receiver) | receiver == p }
-      end
-
-      def makes_a_gift(draw, p)
-        draw.any? { | (giver, receiver) | receiver == p }
-      end
-
-      def consistent_with_constraints(event, draw, giver, receiver)
-        not event.constraints.any? do |c|
-          (c.one == giver and c.other == receiver) or (c.one == receiver and c.other == giver)
-        end
-      end
 
       for p in @event.participants
         assert(receives_a_gift(draw, p))
@@ -53,7 +39,7 @@ class EventTest < ActiveSupport::TestCase
 
       for (giver, receiver) in draw
         assert_not_equal giver, receiver
-        consistent = consistent_with_constraints @event, draw, giver, receiver
+        consistent = consistent_with_constraints @event, giver, receiver
         assert consistent, "Constraints should not be violated"
       end
     end

@@ -2,7 +2,7 @@ require 'test_helper'
 
 class EventsEditTest < ActionDispatch::IntegrationTest
   def setup
-    @event = events :secretsanta
+    @event = events :empty
   end
 
   test "invalid edit with bad title" do
