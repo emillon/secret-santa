@@ -1,5 +1,19 @@
 require 'test_helper'
 
+def receives_a_gift(draw, p)
+  draw.any? { | (_, receiver) | receiver == p }
+end
+
+def makes_a_gift(draw, p)
+  draw.any? { | (giver, _) | giver == p }
+end
+
+def consistent_with_constraints(event, giver, receiver)
+  event.constraints.all? do |c|
+    c.respected_by(giver, receiver)
+  end
+end
+
 class EventTest < ActiveSupport::TestCase
   def setup
     @event = events :secretsanta
@@ -18,20 +32,6 @@ class EventTest < ActiveSupport::TestCase
     50.times do
       draw = @event.draw_order
 
-      def receives_a_gift(draw, p)
-        draw.any? { | (giver, receiver) | receiver == p }
-      end
-
-      def makes_a_gift(draw, p)
-        draw.any? { | (giver, receiver) | receiver == p }
-      end
-
-      def consistent_with_constraints(event, draw, giver, receiver)
-        not event.constraints.any? do |c|
-          (c.one == giver and c.other == receiver) or (c.one == receiver and c.other == giver)
-        end
-      end
-
       for p in @event.participants
         assert(receives_a_gift(draw, p))
         assert(makes_a_gift(draw, p))
@@ -39,7 +39,7 @@ class EventTest < ActiveSupport::TestCase
 
       for (giver, receiver) in draw
         assert_not_equal giver, receiver
-        consistent = consistent_with_constraints @event, draw, giver, receiver
+        consistent = consistent_with_constraints @event, giver, receiver
         assert consistent, "Constraints should not be violated"
       end
     end
