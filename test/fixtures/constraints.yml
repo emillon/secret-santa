@@ -12,3 +12,8 @@ bob_and_wife:
   event: secretsanta
   one: bob
   other: bobs_wife
+
+alice_and_husband:
+  event: impossible
+  one: alice
+  other: alices_husband

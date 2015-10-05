@@ -52,4 +52,10 @@ class EventTest < ActiveSupport::TestCase
     e2.save
     assert_not_equal e2.id, (e1.id + 1)
   end
+
+  test "impossible event" do
+    event = events :impossible
+    draw = event.draw_order
+    assert_nil draw
+  end
 end

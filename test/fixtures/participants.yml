@@ -29,3 +29,13 @@ bobs_wife:
   name: Bob's wife
   email: bobswife@example.com
   event: secretsanta
+
+alice:
+  name: Alice
+  email: alice@example.com
+  event: impossible
+
+alices_husband:
+  name: Alice's husband
+  email: alices_husband@example.com
+  event: impossible
