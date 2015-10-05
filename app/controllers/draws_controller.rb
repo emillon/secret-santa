@@ -19,6 +19,15 @@ class DrawsController < ApplicationController
     if order.nil?
       flash[:danger] = 'Constraints could not be satisfied. You can remove some of them and try again.'
     else
+      send_draws(order)
+      flash[:success] = 'Ballots have been drawn and emails sent.'
+    end
+    redirect_to @event
+  end
+
+  private
+
+    def send_draws(order)
       for (giver, receiver) in order
         draw = Draw.new(giver: giver, receiver: receiver)
         @event.draws << draw
@@ -27,8 +36,5 @@ class DrawsController < ApplicationController
       for draw in @event.draws
         draw.send_email
       end
-      flash[:success] = 'Ballots have been drawn and emails sent.'
     end
-    redirect_to @event
-  end
 end
