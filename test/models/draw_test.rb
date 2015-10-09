@@ -9,5 +9,6 @@ class DrawTest < ActiveSupport::TestCase
     assert_nil draw.sent_at
     draw.send_email
     assert_not_nil draw.sent_at
+    assert_equal 1, ActionMailer::Base.deliveries.size
   end
 end
