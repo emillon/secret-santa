@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141211221832) do
+ActiveRecord::Schema.define(version: 20151006181951) do
 
   create_table "constraints", force: :cascade do |t|
     t.integer  "event_id"
@@ -31,6 +31,7 @@ ActiveRecord::Schema.define(version: 20141211221832) do
     t.integer  "receiver_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.datetime "sent_at"
   end
 
   add_index "draws", ["event_id"], name: "index_draws_on_event_id"
