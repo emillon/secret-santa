@@ -9,9 +9,10 @@ class DrawTest < ActiveSupport::TestCase
     assert_nil draw.sent_at
     time = Time.local(2008, 9, 1, 12, 0, 0)
     travel_to time do
-      draw.send_email
+      assert_difference 'ActionMailer::Base.deliveries.size', +1 do
+        draw.send_email
+      end
     end
     assert_equal time, draw.sent_at
-    assert_equal 1, ActionMailer::Base.deliveries.size
   end
 end
