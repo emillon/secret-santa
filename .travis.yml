@@ -2,7 +2,7 @@ sudo: false
 language: ruby
 cache: bundler
 rvm:
-  - 2.1.5
+  - 2.2.3
 deploy:
   provider: heroku
   api_key:
