@@ -25,5 +25,9 @@ class GiftMailsTest < ActionDispatch::IntegrationTest
         patch event_draw_path(event_id: @event)
       end
     end
+
+    @event.draws.each do |d|
+      assert_not_nil d.sent_at
+    end
   end
 end
