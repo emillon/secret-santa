@@ -6,5 +6,6 @@ class Draw < ActiveRecord::Base
   def send_email
     DrawMailer.gift(self).deliver_now
     self.sent_at = Time.now
+    self.save!
   end
 end
