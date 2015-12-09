@@ -11,6 +11,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'bootstrap-sass', '~> 3.3.0'
 gem 'cocoon', '1.2.6'
 gem 'coveralls', '~> 0.7.1', require: false
+gem 'administrate', '~> 0.1.1'
 
 group :development, :test do
   gem 'byebug'
