@@ -32,4 +32,13 @@ class EventsControllerTest < ActionController::TestCase
     }
     assert_redirected_to @event
   end
+
+  test "displays number of participants" do
+    get :show, id: @event
+    h2 = css_select "h2"
+    participants_text = h2[0].text
+    number_of_participants = @event.participants.length.to_s
+    assert participants_text.include?(number_of_participants)
+  end
+
 end
