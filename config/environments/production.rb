@@ -89,4 +89,7 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+  config.x.admin_panel_user = ENV['ADMIN_PANEL_USER']
+  config.x.admin_panel_password = ENV['ADMIN_PANEL_PASSWORD']
 end

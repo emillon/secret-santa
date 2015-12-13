@@ -8,13 +8,17 @@ class Admin::ApplicationController < Administrate::ApplicationController
   before_filter :authenticate_admin
 
   def authenticate_admin
-    head :forbidden
-    # TODO Add authentication logic here.
+    if Rails.application.config.x.admin_panel_insecure
+      return
+    end
+    admin_user = Rails.application.config.x.admin_panel_user
+    admin_password = Rails.application.config.x.admin_panel_password
+    if admin_user.nil? || admin_password.nil?
+      head :forbidden
+    end
+    authenticate_or_request_with_http_basic do |username, password|
+      username == admin_user && password == admin_password
+    end
   end
 
-  # Override this value to specify the number of elements to display at a time
-  # on index pages. Defaults to 20.
-  # def records_per_page
-  #   params[:per_page] || 20
-  # end
 end
