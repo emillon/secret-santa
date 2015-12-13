@@ -12,7 +12,7 @@ class DrawMailerTest < ActionMailer::TestCase
     mail = DrawMailer.gift @draw
     assert_equal "Secret Santa - gift assignment for Michel", mail.subject
     assert_equal [@michel.email], mail.to
-    assert_equal ["noreply@example.com"], mail.from
+    assert_equal "Secret Santa Creator <secretsanta@emillon.org>", mail[:from].to_s
     for part in [mail.html_part.decoded, mail.text_part.decoded]
       assert_match "Hello Michel", part
       assert_match /to.*Bob/m, part
@@ -34,7 +34,7 @@ class DrawMailerTest < ActionMailer::TestCase
     mail = DrawMailer.gift @draw
     assert_equal "Secret Santa - attribution du cadeau pour Michel", mail.subject
     assert_equal [@michel.email], mail.to
-    assert_equal ["noreply@example.com"], mail.from
+    assert_equal "Secret Santa Creator <secretsanta@emillon.org>", mail[:from].to_s
     for part in [mail.html_part.decoded, mail.text_part.decoded]
       assert_match "Bonjour Michel", part
       assert_match /à.*Bob/m, part
