@@ -4,8 +4,21 @@ This will shuffle the participants, and create an order.
 
 After this, no new participants can be added.
 
-<%= form_for @event, url: event_draw_path do |f| %>
+<%= form_for @event, url: event_draw_path, remote: true do |f| %>
   <%= render '/shared/form_errors' %>
 
   <%= f.submit "Go!", class: "btn btn-primary" %>
+
+  <div class="sk-cube-grid indicator">
+    <div class="sk-cube sk-cube1"></div>
+    <div class="sk-cube sk-cube2"></div>
+    <div class="sk-cube sk-cube3"></div>
+    <div class="sk-cube sk-cube4"></div>
+    <div class="sk-cube sk-cube5"></div>
+    <div class="sk-cube sk-cube6"></div>
+    <div class="sk-cube sk-cube7"></div>
+    <div class="sk-cube sk-cube8"></div>
+    <div class="sk-cube sk-cube9"></div>
+  </div>
+  <div class="status"></div>
 <% end %>
