@@ -26,6 +26,10 @@ class DrawsControllerTest < ActionController::TestCase
 
     get :show, event_id: @event
     assert_response :success
+
+    assert_no_difference '@event.draws(force_reload: true).size' do
+      patch :update, event_id: @event
+    end
   end
 
   test "impossible draw" do

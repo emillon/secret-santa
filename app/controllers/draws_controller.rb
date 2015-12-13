@@ -16,6 +16,10 @@ class DrawsController < ApplicationController
   def update
     @event = Event.find(params[:event_id])
     order = @event.draw_order
+    if @event.draws.any?
+      redirect_to event_draw_url(@event)
+      return
+    end
     if order.nil?
       flash[:danger] = 'Constraints could not be satisfied. You can remove some of them and try again.'
     else
