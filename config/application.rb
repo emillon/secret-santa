@@ -22,5 +22,11 @@ module Noel
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
+
+    # true => /admin without being authed
+    config.x.admin_panel_insecure = false
+    # if user or password is nil, any login attempt will fail
+    config.x.admin_panel_user = nil
+    config.x.admin_panel_password = nil
   end
 end
