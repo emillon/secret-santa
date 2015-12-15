@@ -8,6 +8,9 @@ class EventsControllerTest < ActionController::TestCase
   test "should get new" do
     get :new
     assert_response :success
+    assert_select "#event_locale option" do |options|
+      assert_equal 2, options.length
+    end
   end
 
   test "show event" do
