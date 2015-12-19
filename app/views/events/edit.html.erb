@@ -29,6 +29,11 @@
   <div class="col-md-7">
   <h2>Participants</h2>
 
+  <p>
+    List the participants to this event, including you. Make sure that emails are
+    valid since these are the addresses where the results will be sent to.
+  </p>
+
   <fieldset id="event-participants">
     <ul>
       <%= f.fields_for :participants do |participant| %>
@@ -45,6 +50,15 @@
 
   <div class="col-md-5">
   <h2>Constraints</h2>
+
+  <p>
+    Adding a constraint between Alice and Bob will make sure that Alice will not
+    have to make a gift to Bob, and Bob does not have to make a gift to Alice.
+  </p>
+  <p>
+    In case there are too many constraints and it is impossible to find a
+    solution, you will be informed and no mail will be sent.
+  </p>
 
   <fieldset id="event-constraints">
     <ul>
