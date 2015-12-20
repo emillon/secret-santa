@@ -44,4 +44,11 @@ class EventsControllerTest < ActionController::TestCase
     assert participants_text.include?(number_of_participants)
   end
 
+  test "validates email" do
+    get :edit, id: @event
+    assert_select 'input[type=email]' do |inputs|
+      assert_equal @event.participants.length, inputs.length
+    end
+  end
+
 end
