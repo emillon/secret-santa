@@ -14,9 +14,12 @@ gem 'cocoon', '1.2.6'
 gem 'coveralls', '~> 0.8.0', require: false
 gem 'administrate', '~> 0.1.1'
 
+group :development do
+  gem 'web-console', '~> 2.0'
+end
+
 group :development, :test do
   gem 'byebug'
-  gem 'web-console', '~> 2.0'
   gem 'spring'
   gem 'sqlite3'
 end
