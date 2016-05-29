@@ -1,6 +1,12 @@
 sudo: false
 language: ruby
 cache: bundler
+addons:
+  apt:
+    sources:
+      - travis-ci/sqlite3
+    packages:
+      - sqlite3
 rvm:
   - 2.3.1
 gemfile:
