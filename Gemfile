@@ -34,5 +34,5 @@ end
 group :production do
   gem 'pg',             '~> 0.18.0'
   gem 'rails_12factor', '~> 0.0.3'
-  gem 'unicorn',        '~> 5.0.0'
+  gem 'unicorn',        '~> 5.1.0'
 end
