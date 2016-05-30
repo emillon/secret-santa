@@ -14,7 +14,7 @@ class EventsControllerTest < ActionController::TestCase
   end
 
   test "show event" do
-    get :show, id: @event
+    get :show, params: { id: @event }
     assert_select "a[href=?]", event_draw_path(@event)
   end
 
@@ -24,20 +24,23 @@ class EventsControllerTest < ActionController::TestCase
     draw = Draw.new giver: bob, receiver: michel
     @event.draws << draw
 
-    get :show, id: @event
+    get :show, params: { id: @event }
     assert_not flash.empty?
 
-    get :edit, id: @event
+    get :edit, params: { id: @event }
     assert_redirected_to @event
 
-    patch :update, id: @event, event: {
-      locale: :fr
+    patch :update, params: {
+      id: @event,
+      event: {
+        locale: :fr
+      }
     }
     assert_redirected_to @event
   end
 
   test "displays number of participants" do
-    get :show, id: @event
+    get :show, params: { id: @event }
     h2 = css_select "h2"
     participants_text = h2[0].text
     number_of_participants = @event.participants.length.to_s
@@ -45,7 +48,7 @@ class EventsControllerTest < ActionController::TestCase
   end
 
   test "validates email" do
-    get :edit, id: @event
+    get :edit, params: { id: @event }
     assert_select 'input[type=email]' do |inputs|
       assert_equal @event.participants.length, inputs.length
     end
