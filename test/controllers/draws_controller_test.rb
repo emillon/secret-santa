@@ -15,7 +15,7 @@ class DrawsControllerTest < ActionController::TestCase
     get :new, params: { event_id: @event }
     assert_response :success
     delta = @event.participants.size
-    assert_difference '@event.draws(force_reload: true).size', delta do
+    assert_difference '@event.draws.reload.size', delta do
       patch :update, params: { event_id: @event }
     end
     assert_not flash.empty?
@@ -27,7 +27,7 @@ class DrawsControllerTest < ActionController::TestCase
     get :show, params: { event_id: @event }
     assert_response :success
 
-    assert_no_difference '@event.draws(force_reload: true).size' do
+    assert_no_difference '@event.draws.reload.size' do
       patch :update, params: { event_id: @event }
     end
   end
