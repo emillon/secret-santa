@@ -36,7 +36,7 @@ class EventsEditTest < ActionDispatch::IntegrationTest
     follow_redirect!
     assert_not flash.empty?
     assert_template 'events/show'
-    participants = @event.participants(force_reload: true)
+    participants = @event.participants.reload
     assert_equal 2, participants.size
 
     id1, id2 = participants.collect { |x| x.id }
@@ -58,7 +58,7 @@ class EventsEditTest < ActionDispatch::IntegrationTest
         }
       }
     }
-    participants = @event.participants(force_reload: true)
+    participants = @event.participants.reload
     assert_equal 2, participants.size
     assert_equal 'new b', participants[1].name
 
@@ -79,7 +79,7 @@ class EventsEditTest < ActionDispatch::IntegrationTest
         }
       }
     }
-    participants = @event.participants(force_reload: true)
+    participants = @event.participants.reload
     assert_equal 1, participants.size
     assert_equal 'new b', participants[0].name
   end

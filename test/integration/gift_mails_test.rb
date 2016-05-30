@@ -21,7 +21,7 @@ class GiftMailsTest < ActionDispatch::IntegrationTest
     assert @event.draws.empty?
 
     assert_difference 'ActionMailer::Base.deliveries.size', +6 do
-      assert_difference '@event.draws(force_reload: true).size', 6 do
+      assert_difference '@event.draws.reload.size', 6 do
         patch event_draw_path(event_id: @event)
       end
     end
