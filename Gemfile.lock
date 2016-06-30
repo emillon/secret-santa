@@ -56,6 +56,9 @@ GEM
     bootstrap-sass (3.3.6)
       autoprefixer-rails (>= 5.2.1)
       sass (>= 3.3.4)
+    bourbon (4.2.7)
+      sass (~> 3.4)
+      thor (~> 0.19)
     builder (3.2.2)
     byebug (9.0.5)
     cocoon (1.2.9)
@@ -246,6 +249,7 @@ PLATFORMS
 DEPENDENCIES
   administrate (~> 0.2.0)
   bootstrap-sass (~> 3.3.0)
+  bourbon (~> 4.2.7)
   byebug
   cocoon (~> 1.2.6)
   coffee-rails (~> 4.1.0)
