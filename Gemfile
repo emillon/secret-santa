@@ -12,7 +12,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'bootstrap-sass', '~> 3.3.0'
 gem 'cocoon', '~> 1.2.6'
 gem 'coveralls', '~> 0.8.0', require: false
-gem 'administrate', '~> 0.2.0'
+gem 'administrate', '~> 0.3.0'
 gem 'bourbon', '~> 4.2.7'
 
 group :development do
