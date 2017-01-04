@@ -9,12 +9,6 @@ addons:
       - sqlite3
 rvm:
   - 2.3.3
-gemfile:
-  - Gemfile
-  - Gemfile-rails5
-matrix:
-  allow_failures:
-    - gemfile: Gemfile-rails5
 deploy:
   provider: heroku
   api_key:

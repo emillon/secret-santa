@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 ruby '2.3.3'
 
-gem 'rails', '~> 4.2.0'
+gem 'rails', '~> 5.0.0'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.1.0'
@@ -30,6 +30,7 @@ group :test do
   gem 'mini_backtrace',     '~> 0.1.3'
   gem 'guard',              '~> 2.12.3'
   gem 'guard-minitest',     '~> 2.4.2'
+  gem 'rails-controller-testing', '~> 1.0.1'
 end
 
 group :production do
