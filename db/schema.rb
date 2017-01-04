@@ -1,4 +1,3 @@
-# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -19,11 +18,10 @@ ActiveRecord::Schema.define(version: 20151006181951) do
     t.integer  "other_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["event_id"], name: "index_constraints_on_event_id"
+    t.index ["one_id"], name: "index_constraints_on_one_id"
+    t.index ["other_id"], name: "index_constraints_on_other_id"
   end
-
-  add_index "constraints", ["event_id"], name: "index_constraints_on_event_id"
-  add_index "constraints", ["one_id"], name: "index_constraints_on_one_id"
-  add_index "constraints", ["other_id"], name: "index_constraints_on_other_id"
 
   create_table "draws", force: :cascade do |t|
     t.integer  "event_id"
@@ -32,11 +30,10 @@ ActiveRecord::Schema.define(version: 20151006181951) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.datetime "sent_at"
+    t.index ["event_id"], name: "index_draws_on_event_id"
+    t.index ["giver_id"], name: "index_draws_on_giver_id"
+    t.index ["receiver_id"], name: "index_draws_on_receiver_id"
   end
-
-  add_index "draws", ["event_id"], name: "index_draws_on_event_id"
-  add_index "draws", ["giver_id"], name: "index_draws_on_giver_id"
-  add_index "draws", ["receiver_id"], name: "index_draws_on_receiver_id"
 
   create_table "events", force: :cascade do |t|
     t.string   "title"
@@ -52,8 +49,7 @@ ActiveRecord::Schema.define(version: 20151006181951) do
     t.integer  "event_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["event_id"], name: "index_participants_on_event_id"
   end
-
-  add_index "participants", ["event_id"], name: "index_participants_on_event_id"
 
 end
