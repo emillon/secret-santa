@@ -1,6 +1,10 @@
 ENV['RAILS_ENV'] ||= 'test'
 require 'coveralls'
 Coveralls.wear!('rails')
+SimpleCov.start do
+  add_filter 'app/dashboards'
+  add_filter 'app/controllers/admin'
+end
 require File.expand_path('../../config/environment', __FILE__)
 require 'rails/test_help'
 require 'minitest/reporters'
