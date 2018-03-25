@@ -8,7 +8,7 @@ addons:
     packages:
       - sqlite3
 rvm:
-  - 2.3.6
+  - 2.5.0
 deploy:
   provider: heroku
   api_key:
