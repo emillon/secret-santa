@@ -8,7 +8,6 @@ gem 'coffee-rails', '~> 5.0.0'
 gem 'jquery-rails'
 gem 'sprockets-rails'
 gem 'jbuilder', '~> 2.0'
-gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'bootstrap-sass', '~> 3.4.1'
 gem 'cocoon', '~> 1.2.6'
 gem 'coveralls', '~> 0.8.0', require: false
