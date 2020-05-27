@@ -31,7 +31,7 @@ class EventsController < ApplicationController
     if @event.draws.any?
       return (redirect_to @event)
     end
-    if @event.update_attributes(event_params)
+    if @event.update(event_params)
       flash[:success] = "Event updated"
       redirect_to @event
     else
